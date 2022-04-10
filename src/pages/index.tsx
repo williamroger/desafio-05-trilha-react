@@ -67,7 +67,7 @@ export default function Home({ postsPagination }: HomeProps) {
   }
 
   return (
-    <main className={styles.container}>
+    <main className={commonStyles.container}>
       <div className={styles.posts}>
         {posts.map(post => (
           <Link href={`/post/${post.uid}`} key={post.uid}>
@@ -88,7 +88,7 @@ export default function Home({ postsPagination }: HomeProps) {
           </Link>
         ))}
 
-        {postsPagination.next_page !== null && <button onClick={handleLoadPostsClick}>Carregar mais posts</button>}
+        {postsPagination.next_page !== null && <button onClick={handleLoadPostsClick} className={commonStyles.button}>Carregar mais posts</button>}
       </div>
     </main>
   );
@@ -116,12 +116,15 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   });
 
+  const timeToRevalidate = 60 * 3;
+
   return {
     props: {
       postsPagination: {
         next_page: 'link',
         results: posts,
       }
-    }
+    },
+    revalidate: timeToRevalidate,
   }
 };

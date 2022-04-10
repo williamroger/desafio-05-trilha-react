@@ -1,1 +1,17 @@
-// TODO
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.button {
+  border: none;
+  background: transparent;
+  display: flex;
+  text-align: center;
+  color: #FF57B2;
+  font-weight: 600;
+  margin-top: 4rem;
+  font-size: 1.125rem;
+}
